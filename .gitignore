@@ -47,7 +47,6 @@ build-*/
 CMakeFiles/
 CMakeCache.txt
 cmake_install.cmake
-Makefile
 install_manifest.txt
 compile_commands.json
 
@@ -66,3 +65,18 @@ vcpkg_installed/
 # test output & cache
 Testing/
 .cache/
+
+# Output cua cac chuong trinh
+bin/
+/output*.csv
+
+# Python
+__pycache__/
+*.pyc
+
+# LaTeX (report/)
+*.aux
+*.toc
+*.synctex.gz
+*.fdb_latexmk
+*.fls
