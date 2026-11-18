@@ -1,5 +1,6 @@
 // Tich vo huong tuan tu: s = sum(a[i] * b[i]), i = 0..n-1
 // Cach chay: dot_seq [n]   (mac dinh n = 10^7)
+#include <chrono>
 #include <cstdio>
 #include <cstdlib>
 #include <vector>
@@ -32,9 +33,14 @@ int main(int argc, char** argv) {
     std::vector<double> a(n), b(n);
     init_vectors(a, b);
 
+    // Chi do phan tinh toan, khong tinh thoi gian khoi tao
+    auto t0 = std::chrono::steady_clock::now();
     double s = dot(a, b);
+    auto t1 = std::chrono::steady_clock::now();
+    double t = std::chrono::duration<double>(t1 - t0).count();
 
     std::printf("n = %lld\n", n);
     std::printf("ket qua = %.6f\n", s);
+    std::printf("thoi gian = %.6f s\n", t);
     return 0;
 }
