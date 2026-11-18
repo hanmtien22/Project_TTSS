@@ -14,6 +14,13 @@ static void init_vectors(std::vector<double>& a, std::vector<double>& b) {
     }
 }
 
+static double dot(const std::vector<double>& a, const std::vector<double>& b) {
+    double s = 0.0;
+    for (std::size_t i = 0; i < a.size(); ++i)
+        s += a[i] * b[i];
+    return s;
+}
+
 int main(int argc, char** argv) {
     long long n = 10000000;
     if (argc > 1) n = std::atoll(argv[1]);
@@ -25,6 +32,9 @@ int main(int argc, char** argv) {
     std::vector<double> a(n), b(n);
     init_vectors(a, b);
 
+    double s = dot(a, b);
+
     std::printf("n = %lld\n", n);
+    std::printf("ket qua = %.6f\n", s);
     return 0;
 }
