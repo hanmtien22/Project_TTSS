@@ -1,0 +1,5 @@
+kernel,n,tile,reps,mean_s,std_s,gflops,checksum,cauhinh
+tiled_simd,2000,64,7,0.625226,0.023229,25.591,2.000920e+09,O2_avx2fma_cho_simd
+tiled_simd,2000,128,7,0.684062,0.007693,23.390,2.000920e+09,O2_avx2fma_cho_simd
+tiled_simd,2048,64,7,0.872083,0.023846,19.700,2.148339e+09,O2_avx2fma_cho_simd
+tiled_simd,2048,128,7,1.529603,0.039788,11.232,2.148339e+09,O2_avx2fma_cho_simd
