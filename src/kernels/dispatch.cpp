@@ -7,9 +7,20 @@
 void block_matmul_add(const double* A, const double* B, double* C,
                       int b, Kernel k, int tile)
 {
-    switch (k) {
+       switch (k) {
     case Kernel::Naive:
         kernel_naive(A, B, C, b);
+        break;
+    case Kernel::Tiled:
+        if (tile <= 0) tile = 64;   // tranh tile = 0 lam vong lap chay mai
+        kernel_tiled(A, B, C, b, tile);
+        break;
+     case Kernel::Simd:
+        kernel_simd(A, B, C, b);
+        break;
+    case Kernel::TiledSimd:
+        if (tile <= 0) tile = 64;
+        kernel_tiled_simd(A, B, C, b, tile);
         break;
     default:
         printf("Kernel nay chua lam\n");
