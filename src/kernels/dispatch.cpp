@@ -18,6 +18,10 @@ void block_matmul_add(const double* A, const double* B, double* C,
      case Kernel::Simd:
         kernel_simd(A, B, C, b);
         break;
+    case Kernel::TiledSimd:
+        if (tile <= 0) tile = 64;
+        kernel_tiled_simd(A, B, C, b, tile);
+        break;
     default:
         printf("Kernel nay chua lam\n");
         exit(1);
