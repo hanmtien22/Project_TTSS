@@ -49,7 +49,16 @@ int main()
                b, sai, sai <= nguong ? "ok" : "LOI");
         if (sai > nguong) loi++;
     }
-    if (loi == 0) printf("OK: tiled va simd khop naive\n");
+    for (int b : cac_b) {
+        for (int tile : cac_tile) {
+            double sai = so_sanh(b, Kernel::TiledSimd, tile);
+            double nguong = 1e-9 * b;
+            printf("tsimd b=%4d tile=%3d sai so=%.3e %s\n",
+                   b, tile, sai, sai <= nguong ? "ok" : "LOI");
+            if (sai > nguong) loi++;
+        }
+    }
+    if (loi == 0) printf("OK: tiled, simd, tiled_simd khop naive\n");
     else printf("Co %d truong hop loi\n", loi);
     return loi > 0;
 }
